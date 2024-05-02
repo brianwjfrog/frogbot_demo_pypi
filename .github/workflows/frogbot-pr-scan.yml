@@ -43,6 +43,7 @@ jobs:
           # [Mandatory]
           # The GitHub token automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JF_TEST: 123
 
           # [Optional, default: https://api.github.com]
           # API endpoint to GitHub
