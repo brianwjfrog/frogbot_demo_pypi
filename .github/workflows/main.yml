@@ -120,7 +120,7 @@ jobs:
 
           # [Optional, Default: "FALSE"]
           # Handle vulnerabilities with fix versions only
-          # JF_FIXABLE_ONLY: "TRUE"
+          JF_FIXABLE_ONLY: "FALSE"
 
           # [Optional]
           # Set the minimum severity for vulnerabilities that should be fixed and commented on in pull requests
