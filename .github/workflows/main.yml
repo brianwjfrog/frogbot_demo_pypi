@@ -24,6 +24,7 @@ jobs:
           # JFrog platform URL
           JF_URL: ${{ secrets.JF_URL }}
           JFROG_CLI_LOG_LEVEL: DEBUG
+          JF_REQUIREMENTS_FILE: requirements.txt
 
           # [Mandatory if JF_USER and JF_PASSWORD are not provided]
           # JFrog access token with 'read' permissions on Xray service
