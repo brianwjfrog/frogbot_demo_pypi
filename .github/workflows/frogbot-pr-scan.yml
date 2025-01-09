@@ -16,6 +16,7 @@ jobs:
         run: |
           # Ping the server
           jf rt ping
+          jf xr curl api/v1/system/version 
           # Collect environment variables for the build
           jf rt bce
           # Collect VCS details from git and add them to the build
