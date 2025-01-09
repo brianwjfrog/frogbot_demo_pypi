@@ -15,9 +15,10 @@ jobs:
       matrix:
         # The repository scanning will be triggered periodically on the following branches.
         branch: [ "main" ]
+    steps:  
     - name: Setup JFrog CLI
-        uses: jfrog/setup-jfrog-cli@v4
-        env:
+      uses: jfrog/setup-jfrog-cli@v4
+      env:
           # JFrog platform url (for example: https://acme.jfrog.io)
           JF_URL: ${{ secrets.JF_URL }}
 
@@ -27,20 +28,8 @@ jobs:
           # Basic authentication credentials
           JF_USER: ${{ secrets.JF_USER }}
           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-
-      - name: Run JFrog CLI
-        run: |
-          # Ping the server
-          jf rt ping
-          # Collect environment variables for the build
-          jf rt bce
-          # Collect VCS details from git and add them to the build
-          jf rt bag
-          # Publish build info
-          jf rt bp  
-    steps:
-      - name: Run JFrog CLI
-        run: |
+    - name: Run JFrog CLI
+      run: |
           # Ping the server
           jf rt ping
           jf xr curl api/v1/system/version 
@@ -50,18 +39,18 @@ jobs:
           jf rt bag
           # Publish build info
           jf rt bp    
-      - uses: actions/checkout@v3
-        with:
+    - uses: actions/checkout@v3
+      with:
           ref: ${{ matrix.branch }}
 
       # Install prerequisites
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
           python-version: '3.9'
           cache: 'pip'
-      - uses: jfrog/frogbot@v2
-        env:
+    - uses: jfrog/frogbot@v2
+      env:
           # [Mandatory]
           # JFrog platform URL
           JF_URL: ${{ secrets.JF_URL }}
